@@ -1,9 +1,5 @@
 <script>
-    let contacts = [
-        "Chip Smith",
-        "Randy Horn",
-        "Zane High"
-    ];
+    import ContactList from "$lib/ContactList.svelte";
 </script>
 
 <nav class="navbar bg-body-tertiary">
@@ -15,11 +11,7 @@
 <div class="container-fluid g-0">
     <div class="row g-0">
         <div class="col-4">
-            <ul class="list-group list-group-flush">
-                {#each contacts as contact}
-                    <li class="list-group-item">{contact}</li>
-                {/each}    
-            </ul>        
+            <ContactList/>
         </div>
     </div>
 </div>
