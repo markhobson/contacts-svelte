@@ -1,9 +1,12 @@
 <script>
     import contacts from "$lib/contactsStore.js";
+    export let selected;
 </script>
 
-<ul class="list-group list-group-flush">
+<div class="list-group list-group-flush">
     {#each $contacts as contact}
-        <li class="list-group-item">{contact}</li>
+        <a class="list-group-item list-group-item-action" class:active={selected === contact} href="/contact/{contact.id}">
+            {contact.name}
+        </a>
     {/each}    
-</ul>        
+</div>        
