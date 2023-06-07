@@ -1,8 +1,11 @@
 import contacts from "$lib/server/contacts.js";
 
-export function load() {
+export function load({ params }) {
+    const id = parseInt(params.id);
+
     return {
-        contacts: contacts.getAll()
+        contacts: contacts.getAll(),
+        contact: contacts.get(id)
     };
 }
 

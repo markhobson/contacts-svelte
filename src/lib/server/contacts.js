@@ -9,9 +9,18 @@ class Contacts {
         return this.#contacts;
     }
 
+    get(id) {
+        const index = this.#getIndex(id);
+        return this.#contacts[index];
+    }
+
     update(contact) {
-        const index = this.#contacts.findIndex(c => c.id === contact.id);
+        const index = this.#getIndex(contact.id);
         this.#contacts[index] = contact;
+    }
+
+    #getIndex(id) {
+        return this.#contacts.findIndex(contact => contact.id === id);
     }
 }
 
