@@ -1,7 +1,7 @@
 <script>
     import { page } from "$app/stores";
     import ContactList from "$lib/ContactList.svelte";
-    import Contact from "$lib/Contact.svelte";
+    import ContactForm from "$lib/ContactForm.svelte";
     export let data;
 
     $: contact = data.contacts.find(contact => contact.id === parseInt($page.params.id));
@@ -13,7 +13,7 @@
             <ContactList contacts={data.contacts} selected={contact}/>
         </div>
         <div class="col">
-            <Contact contact={contact}/>
+            <ContactForm contact={contact}/>
         </div>
     </div>
 </div>
