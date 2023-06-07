@@ -16,7 +16,7 @@ export function load({ params }) {
 }
 
 export const actions = {
-    default: async ({ request, params }) => {
+    save: async ({ request, params }) => {
         const id = parseInt(params.id);
         const data = await request.formData();
 
@@ -24,5 +24,11 @@ export const actions = {
             id: id,
             name: data.get("name")
         });
+    },
+
+    delete: async ({ params }) => {
+        const id = parseInt(params.id);
+
+        contacts.delete(id);
     }
 };

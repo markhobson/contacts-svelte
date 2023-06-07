@@ -19,6 +19,11 @@ class Contacts {
         this.#contacts[index] = contact;
     }
 
+    delete(id) {
+        const index = this.#getIndex(id);
+        this.#contacts.splice(index, 1);
+    }
+
     #getIndex(id) {
         return this.#contacts.findIndex(contact => contact.id === id);
     }
