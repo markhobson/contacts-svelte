@@ -1,6 +1,6 @@
 <script>
     import contacts from "$lib/contactsStore.js";
-    export let selected;
+    export let selected = null;
 </script>
 
 <div class="list-group list-group-flush">
