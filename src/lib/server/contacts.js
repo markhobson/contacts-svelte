@@ -1,9 +1,12 @@
 class Contacts {
-    #contacts = [
-        {id: 1, name: "Chip Smith"},
-        {id: 2, name: "Randy Horn"},
-        {id: 3, name: "Zane High"}
-    ];
+    #nextId = 1;
+    #contacts = [];
+
+    constructor() {
+        this.create({name: "Chip Smith"});
+        this.create({name: "Randy Horn"});
+        this.create({name: "Zane High"});
+    }
 
     getAll() {
         return this.#contacts;
@@ -14,6 +17,12 @@ class Contacts {
         return this.#contacts[index];
     }
 
+    create(contact) {
+        const contactWithId = {...contact, id: this.#getNextId()};
+        this.#contacts.push(contactWithId);
+        return contactWithId;
+    }
+
     update(contact) {
         const index = this.#getIndex(contact.id);
         this.#contacts[index] = contact;
@@ -22,6 +31,10 @@ class Contacts {
     delete(id) {
         const index = this.#getIndex(id);
         this.#contacts.splice(index, 1);
+    }
+
+    #getNextId() {
+        return this.#nextId++;
     }
 
     #getIndex(id) {
