@@ -11,8 +11,9 @@ class ContactRepository {
     }
 
     getAll() {
-        return this.#contacts
-            .sort((contact1, contact2) => contact1.name.localeCompare(contact2.name));
+        return this.#contacts.sort((contact1, contact2) =>
+            contact1.name.localeCompare(contact2.name)
+        );
     }
 
     get(id) {
@@ -41,7 +42,7 @@ class ContactRepository {
     }
 
     #getIndex(id) {
-        return this.#contacts.findIndex(contact => contact.id === id);
+        return this.#contacts.findIndex((contact) => contact.id === id);
     }
 }
 

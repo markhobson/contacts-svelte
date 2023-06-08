@@ -1,4 +1,4 @@
-import { redirect } from '@sveltejs/kit';
+import { redirect } from "@sveltejs/kit";
 import Contact from "$lib/server/Contact.js";
 import contactRepository from "$lib/server/contactRepository.js";
 
@@ -12,8 +12,8 @@ export function load({ params }) {
     }
 
     return {
-        contacts: contacts.map(contact => contact.serialize()),
-        contact: contact.serialize()
+        contacts: contacts.map((contact) => contact.serialize()),
+        contact: contact.serialize(),
     };
 }
 
@@ -30,5 +30,5 @@ export const actions = {
         const id = parseInt(params.id);
 
         contactRepository.delete(id);
-    }
+    },
 };

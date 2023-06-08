@@ -7,10 +7,10 @@
 <div class="container-fluid g-0">
     <div class="row g-0">
         <div class="col-4">
-            <ContactList contacts={data.contacts} selected={data.contact}/>
+            <ContactList contacts={data.contacts} selected={data.contact} />
         </div>
         <div class="col">
-            <ContactForm contact={data.contact}/>
+            <ContactForm contact={data.contact} />
         </div>
     </div>
 </div>
