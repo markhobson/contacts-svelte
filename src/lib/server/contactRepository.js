@@ -9,7 +9,8 @@ class ContactRepository {
     }
 
     getAll() {
-        return this.#contacts;
+        return this.#contacts
+            .sort((contact1, contact2) => contact1.name.localeCompare(contact2.name));
     }
 
     get(id) {
