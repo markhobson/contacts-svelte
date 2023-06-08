@@ -1,11 +1,13 @@
+import Contact from "$lib/server/Contact.js";
+
 class ContactRepository {
     #nextId = 1;
     #contacts = [];
 
     constructor() {
-        this.create({name: "Chip Smith"});
-        this.create({name: "Randy Horn"});
-        this.create({name: "Zane High"});
+        this.create(new Contact(null, "Chip Smith"));
+        this.create(new Contact(null, "Randy Horn"));
+        this.create(new Contact(null, "Zane High"));
     }
 
     getAll() {
@@ -19,9 +21,9 @@ class ContactRepository {
     }
 
     create(contact) {
-        const contactWithId = {...contact, id: this.#getNextId()};
-        this.#contacts.push(contactWithId);
-        return contactWithId;
+        contact.id = this.#getNextId();
+        this.#contacts.push(contact);
+        return contact;
     }
 
     update(contact) {
