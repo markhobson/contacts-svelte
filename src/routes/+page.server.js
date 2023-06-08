@@ -1,7 +1,7 @@
-import contacts from "$lib/server/contacts.js";
+import contactRepository from "$lib/server/contactRepository.js";
 
 export function load() {
     return {
-        contacts: contacts.getAll()
+        contacts: contactRepository.getAll()
     };
 }

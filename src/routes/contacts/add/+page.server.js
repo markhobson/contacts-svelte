@@ -1,9 +1,9 @@
 import { redirect } from '@sveltejs/kit';
-import contacts from "$lib/server/contacts.js";
+import contactRepository from "$lib/server/contactRepository.js";
 
 export function load() {
     return {
-        contacts: contacts.getAll()
+        contacts: contactRepository.getAll()
     };
 }
 
@@ -11,7 +11,7 @@ export const actions = {
     save: async ({ request }) => {
         const data = await request.formData();
 
-        var contact = contacts.create({
+        var contact = contactRepository.create({
             name: data.get("name")
         });
 

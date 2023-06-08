@@ -1,16 +1,16 @@
 import { redirect } from '@sveltejs/kit';
-import contacts from "$lib/server/contacts.js";
+import contactRepository from "$lib/server/contactRepository.js";
 
 export function load({ params }) {
     const id = parseInt(params.id);
-    const contact = contacts.get(id);
+    const contact = contactRepository.get(id);
 
     if (contact === undefined) {
         throw redirect(303, "/");
     }
 
     return {
-        contacts: contacts.getAll(),
+        contacts: contactRepository.getAll(),
         contact
     };
 }
@@ -20,7 +20,7 @@ export const actions = {
         const id = parseInt(params.id);
         const data = await request.formData();
 
-        contacts.update({
+        contactRepository.update({
             id: id,
             name: data.get("name")
         });
@@ -29,6 +29,6 @@ export const actions = {
     delete: async ({ params }) => {
         const id = parseInt(params.id);
 
-        contacts.delete(id);
+        contactRepository.delete(id);
     }
 };

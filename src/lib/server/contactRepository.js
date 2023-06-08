@@ -1,4 +1,4 @@
-class Contacts {
+class ContactRepository {
     #nextId = 1;
     #contacts = [];
 
@@ -42,4 +42,4 @@ class Contacts {
     }
 }
 
-export default new Contacts();
+export default new ContactRepository();
