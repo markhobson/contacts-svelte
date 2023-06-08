@@ -3,7 +3,7 @@
     export let selected = null;
 </script>
 
-<div class="list-group list-group-flush">
+<div class="list-group list-group-flush" role="list">
     {#each contacts as contact (contact.id)}
         <a
             class="list-group-item list-group-item-action"
