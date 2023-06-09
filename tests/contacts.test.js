@@ -9,3 +9,15 @@ test("contacts page has list of contacts", async ({ page }) => {
         "Zane High",
     ]);
 });
+
+test("contacts page can show contact details", async ({ page }) => {
+    await page.goto("/");
+    await page
+        .getByRole("list")
+        .getByRole("link", { name: "Randy Horn" })
+        .click();
+
+    await expect(page.getByRole("textbox", { name: "name" })).toHaveValue(
+        "Randy Horn"
+    );
+});
