@@ -1,9 +1,11 @@
 import { expect, test } from "@playwright/test";
+import ContactsPage from "./pages/ContactsPage.js";
 
 test("contacts page has list of contacts", async ({ page }) => {
-    await page.goto("/");
+    const contactsPage = new ContactsPage(page);
+    await contactsPage.goto();
 
-    await expect(page.getByRole("list").getByRole("link")).toHaveText([
+    await expect(contactsPage.contactsList.items).toHaveText([
         "Chip Smith",
         "Randy Horn",
         "Zane High",
@@ -11,13 +13,9 @@ test("contacts page has list of contacts", async ({ page }) => {
 });
 
 test("contacts page can show contact details", async ({ page }) => {
-    await page.goto("/");
-    await page
-        .getByRole("list")
-        .getByRole("link", { name: "Randy Horn" })
-        .click();
+    const contactsPage = new ContactsPage(page);
+    await contactsPage.goto();
+    const contactPage = await contactsPage.contactsList.select("Randy Horn");
 
-    await expect(page.getByRole("textbox", { name: "name" })).toHaveValue(
-        "Randy Horn"
-    );
+    await expect(contactPage.name).toHaveValue("Randy Horn");
 });
